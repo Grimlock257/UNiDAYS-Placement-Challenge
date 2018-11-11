@@ -5,6 +5,14 @@ import java.util.HashMap;
 public class UnidaysDiscountChallenge {
     private HashMap<Item, Integer> basket;
 
+    // TODO Better?
+    private Discount[] discounts = {
+            new Discount("2 for £20", "B", 20, 2),
+            new Discount("3 for £10", "C", 10, 3),
+            new Discount("Buy 1 get 1 free", "D", 7, 2),
+            new Discount("3 for the price of 2", "E", 10, 3)
+    };
+
     public UnidaysDiscountChallenge() {
         basket = new HashMap<>();
     }
@@ -22,9 +30,19 @@ public class UnidaysDiscountChallenge {
         float curNonDiscount;
 
         for (Item item : basket.keySet()) {
-            if (item.getDiscount() != null) {
-                curDiscount = basket.get(item) / item.getDiscount().getQuantity() * item.getDiscount().getPrice();
-                curNonDiscount = (basket.get(item) - ((basket.get(item) / item.getDiscount().getQuantity()) * item.getDiscount().getQuantity())) * item.getPrice();
+            Discount theDiscount = null;
+
+            // TODO Improve?
+            for (int i = 0; i < discounts.length; i++) {
+                if (item.getName().equals(discounts[i].getProductName())) {
+                    theDiscount = discounts[i];
+                    break;
+                }
+            }
+
+            if (theDiscount != null) {
+                curDiscount = basket.get(item) / theDiscount.getQuantity() * theDiscount.getPrice();
+                curNonDiscount = (basket.get(item) - ((basket.get(item) / theDiscount.getQuantity()) * theDiscount.getQuantity())) * item.getPrice();
 
                 total += curDiscount + curNonDiscount;
             } else {

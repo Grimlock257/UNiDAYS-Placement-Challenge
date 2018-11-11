@@ -1,22 +1,32 @@
 package me.grimlock257.unidayschallenge;
 
 public class Discount {
-    private String name;
+    private String discountName;
+    private String productName;
     private float price;
     private int quantity;
 
-    public Discount(String name, float price, int quantity) {
-        this.name = name;
+    public Discount(String discountName, String productName, float price, int quantity) {
+        this.discountName = discountName;
+        this.productName = productName;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public String getName() {
-        return name;
+    public String getDiscountName() {
+        return discountName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDiscountName(String discountName) {
+        this.discountName = discountName;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public float getPrice() {

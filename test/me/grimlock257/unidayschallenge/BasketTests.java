@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class BasketTests {
     private Item a = new Item("A", 8);
-    private Item b = new Item("B", 12, new Discount("2 for £20", 20, 2));
+    private Item b = new Item("B", 12);
 
     @Test
     public void testA() {
