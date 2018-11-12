@@ -7,6 +7,24 @@ import static org.junit.Assert.*;
 public class BasketTests {
     private Item a = new Item("A", 8);
     private Item b = new Item("B", 12);
+    private Item c = new Item("C", 4);
+    private Item d = new Item("D", 7);
+    private Item e = new Item("E", 5);
+
+    @Test
+    public void testEmptyBasket() {
+        UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
+
+        PriceResult result = basket.calculateTotalPrice();
+
+        float totalPrice = result.getTotal();
+        float deliveryTotal = result.getDeliveryCharge();
+        float overallTotal = totalPrice + deliveryTotal;
+
+        assertEquals(0, totalPrice, 0.0);
+        assertEquals(0, deliveryTotal, 0.0);
+        assertEquals(0, overallTotal, 0.0);
+    }
 
     @Test
     public void testA() {
@@ -43,6 +61,57 @@ public class BasketTests {
     }
 
     @Test
+    public void testC() {
+        UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
+
+        basket.addToBasket(c);
+
+        PriceResult result = basket.calculateTotalPrice();
+
+        float totalPrice = result.getTotal();
+        float deliveryTotal = result.getDeliveryCharge();
+        float overallTotal = totalPrice + deliveryTotal;
+
+        assertEquals(4, totalPrice, 0.0);
+        assertEquals(7, deliveryTotal, 0.0);
+        assertEquals(11, overallTotal, 0.0);
+    }
+
+    @Test
+    public void testD() {
+        UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
+
+        basket.addToBasket(d);
+
+        PriceResult result = basket.calculateTotalPrice();
+
+        float totalPrice = result.getTotal();
+        float deliveryTotal = result.getDeliveryCharge();
+        float overallTotal = totalPrice + deliveryTotal;
+
+        assertEquals(7, totalPrice, 0.0);
+        assertEquals(7, deliveryTotal, 0.0);
+        assertEquals(14, overallTotal, 0.0);
+    }
+
+    @Test
+    public void testE() {
+        UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
+
+        basket.addToBasket(e);
+
+        PriceResult result = basket.calculateTotalPrice();
+
+        float totalPrice = result.getTotal();
+        float deliveryTotal = result.getDeliveryCharge();
+        float overallTotal = totalPrice + deliveryTotal;
+
+        assertEquals(5, totalPrice, 0.0);
+        assertEquals(7, deliveryTotal, 0.0);
+        assertEquals(12, overallTotal, 0.0);
+    }
+
+    @Test
     public void testBB() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
@@ -58,5 +127,282 @@ public class BasketTests {
         assertEquals(20, totalPrice, 0.0);
         assertEquals(7, deliveryTotal, 0.0);
         assertEquals(27, overallTotal, 0.0);
+    }
+
+    @Test
+    public void testBBB() {
+        UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
+
+        basket.addToBasket(b);
+        basket.addToBasket(b);
+        basket.addToBasket(b);
+
+        PriceResult result = basket.calculateTotalPrice();
+
+        float totalPrice = result.getTotal();
+        float deliveryTotal = result.getDeliveryCharge();
+        float overallTotal = totalPrice + deliveryTotal;
+
+        assertEquals(32, totalPrice, 0.0);
+        assertEquals(7, deliveryTotal, 0.0);
+        assertEquals(39, overallTotal, 0.0);
+    }
+
+    @Test
+    public void testBBBB() {
+        UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
+
+        basket.addToBasket(b);
+        basket.addToBasket(b);
+        basket.addToBasket(b);
+        basket.addToBasket(b);
+
+        PriceResult result = basket.calculateTotalPrice();
+
+        float totalPrice = result.getTotal();
+        float deliveryTotal = result.getDeliveryCharge();
+        float overallTotal = totalPrice + deliveryTotal;
+
+        assertEquals(40, totalPrice, 0.0);
+        assertEquals(7, deliveryTotal, 0.0);
+        assertEquals(47, overallTotal, 0.0);
+    }
+
+    @Test
+    public void testCCC() {
+        UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
+
+        basket.addToBasket(c);
+        basket.addToBasket(c);
+        basket.addToBasket(c);
+
+        PriceResult result = basket.calculateTotalPrice();
+
+        float totalPrice = result.getTotal();
+        float deliveryTotal = result.getDeliveryCharge();
+        float overallTotal = totalPrice + deliveryTotal;
+
+        assertEquals(10, totalPrice, 0.0);
+        assertEquals(7, deliveryTotal, 0.0);
+        assertEquals(17, overallTotal, 0.0);
+    }
+
+    @Test
+    public void testCCCC() {
+        UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
+
+        basket.addToBasket(c);
+        basket.addToBasket(c);
+        basket.addToBasket(c);
+        basket.addToBasket(c);
+
+        PriceResult result = basket.calculateTotalPrice();
+
+        float totalPrice = result.getTotal();
+        float deliveryTotal = result.getDeliveryCharge();
+        float overallTotal = totalPrice + deliveryTotal;
+
+        assertEquals(14, totalPrice, 0.0);
+        assertEquals(7, deliveryTotal, 0.0);
+        assertEquals(21, overallTotal, 0.0);
+    }
+
+    @Test
+    public void testDD() {
+        UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
+
+        basket.addToBasket(d);
+        basket.addToBasket(d);
+
+        PriceResult result = basket.calculateTotalPrice();
+
+        float totalPrice = result.getTotal();
+        float deliveryTotal = result.getDeliveryCharge();
+        float overallTotal = totalPrice + deliveryTotal;
+
+        assertEquals(7, totalPrice, 0.0);
+        assertEquals(7, deliveryTotal, 0.0);
+        assertEquals(14, overallTotal, 0.0);
+    }
+
+    @Test
+    public void testDDD() {
+        UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
+
+        basket.addToBasket(d);
+        basket.addToBasket(d);
+        basket.addToBasket(d);
+
+        PriceResult result = basket.calculateTotalPrice();
+
+        float totalPrice = result.getTotal();
+        float deliveryTotal = result.getDeliveryCharge();
+        float overallTotal = totalPrice + deliveryTotal;
+
+        assertEquals(14, totalPrice, 0.0);
+        assertEquals(7, deliveryTotal, 0.0);
+        assertEquals(21, overallTotal, 0.0);
+    }
+
+    @Test
+    public void testEE() {
+        UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
+
+        basket.addToBasket(e);
+        basket.addToBasket(e);
+
+        PriceResult result = basket.calculateTotalPrice();
+
+        float totalPrice = result.getTotal();
+        float deliveryTotal = result.getDeliveryCharge();
+        float overallTotal = totalPrice + deliveryTotal;
+
+        assertEquals(10, totalPrice, 0.0);
+        assertEquals(7, deliveryTotal, 0.0);
+        assertEquals(17, overallTotal, 0.0);
+    }
+
+    @Test
+    public void testEEE() {
+        UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
+
+        basket.addToBasket(e);
+        basket.addToBasket(e);
+        basket.addToBasket(e);
+
+        PriceResult result = basket.calculateTotalPrice();
+
+        float totalPrice = result.getTotal();
+        float deliveryTotal = result.getDeliveryCharge();
+        float overallTotal = totalPrice + deliveryTotal;
+
+        assertEquals(10, totalPrice, 0.0);
+        assertEquals(7, deliveryTotal, 0.0);
+        assertEquals(17, overallTotal, 0.0);
+    }
+
+    @Test
+    public void testEEEE() {
+        UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
+
+        basket.addToBasket(e);
+        basket.addToBasket(e);
+        basket.addToBasket(e);
+        basket.addToBasket(e);
+
+        PriceResult result = basket.calculateTotalPrice();
+
+        float totalPrice = result.getTotal();
+        float deliveryTotal = result.getDeliveryCharge();
+        float overallTotal = totalPrice + deliveryTotal;
+
+        assertEquals(15, totalPrice, 0.0);
+        assertEquals(7, deliveryTotal, 0.0);
+        assertEquals(22, overallTotal, 0.0);
+    }
+
+    @Test
+    public void testDDDDDDDDDDDDDD() {
+        UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
+
+        basket.addToBasket(d);
+        basket.addToBasket(d);
+        basket.addToBasket(d);
+        basket.addToBasket(d);
+        basket.addToBasket(d);
+        basket.addToBasket(d);
+        basket.addToBasket(d);
+        basket.addToBasket(d);
+        basket.addToBasket(d);
+        basket.addToBasket(d);
+        basket.addToBasket(d);
+        basket.addToBasket(d);
+        basket.addToBasket(d);
+        basket.addToBasket(d);
+
+        PriceResult result = basket.calculateTotalPrice();
+
+        float totalPrice = result.getTotal();
+        float deliveryTotal = result.getDeliveryCharge();
+        float overallTotal = totalPrice + deliveryTotal;
+
+        assertEquals(49, totalPrice, 0.0);
+        assertEquals(7, deliveryTotal, 0.0);
+        assertEquals(56, overallTotal, 0.0);
+    }
+
+    @Test
+    public void testBBBBCCC() {
+        UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
+
+        basket.addToBasket(b);
+        basket.addToBasket(b);
+        basket.addToBasket(b);
+        basket.addToBasket(b);
+        basket.addToBasket(c);
+        basket.addToBasket(c);
+        basket.addToBasket(c);
+
+        PriceResult result = basket.calculateTotalPrice();
+
+        float totalPrice = result.getTotal();
+        float deliveryTotal = result.getDeliveryCharge();
+        float overallTotal = totalPrice + deliveryTotal;
+
+        assertEquals(50, totalPrice, 0.0);
+        assertEquals(0, deliveryTotal, 0.0);
+        assertEquals(50, overallTotal, 0.0);
+    }
+
+    @Test
+    public void testABBCCCDDEE() {
+        UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
+
+        basket.addToBasket(a);
+        basket.addToBasket(b);
+        basket.addToBasket(b);
+        basket.addToBasket(c);
+        basket.addToBasket(c);
+        basket.addToBasket(c);
+        basket.addToBasket(d);
+        basket.addToBasket(d);
+        basket.addToBasket(e);
+        basket.addToBasket(e);
+
+        PriceResult result = basket.calculateTotalPrice();
+
+        float totalPrice = result.getTotal();
+        float deliveryTotal = result.getDeliveryCharge();
+        float overallTotal = totalPrice + deliveryTotal;
+
+        assertEquals(55, totalPrice, 0.0);
+        assertEquals(0, deliveryTotal, 0.0);
+        assertEquals(55, overallTotal, 0.0);
+    }
+
+    @Test
+    public void testEDCBAEDCBC() {
+        UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
+
+        basket.addToBasket(e);
+        basket.addToBasket(d);
+        basket.addToBasket(c);
+        basket.addToBasket(b);
+        basket.addToBasket(a);
+        basket.addToBasket(e);
+        basket.addToBasket(d);
+        basket.addToBasket(c);
+        basket.addToBasket(b);
+        basket.addToBasket(c);
+
+        PriceResult result = basket.calculateTotalPrice();
+
+        float totalPrice = result.getTotal();
+        float deliveryTotal = result.getDeliveryCharge();
+        float overallTotal = totalPrice + deliveryTotal;
+
+        assertEquals(55, totalPrice, 0.0);
+        assertEquals(0, deliveryTotal, 0.0);
+        assertEquals(55, overallTotal, 0.0);
     }
 }
