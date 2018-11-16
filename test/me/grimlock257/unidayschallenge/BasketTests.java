@@ -1,15 +1,16 @@
 package me.grimlock257.unidayschallenge;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class BasketTests {
-    private Item a = new Item("A", 8);
-    private Item b = new Item("B", 12);
-    private Item c = new Item("C", 4);
-    private Item d = new Item("D", 7);
-    private Item e = new Item("E", 5);
+    @BeforeClass
+    public static void onLaunch() {
+        Item.loadItems("items.txt");
+        Discount.loadDiscounts("discounts.txt");
+    }
 
     @Test
     public void testEmptyBasket() {
@@ -30,7 +31,7 @@ public class BasketTests {
     public void testA() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(a);
+        basket.addToBasket(Item.getItem("A"));
 
         PriceResult result = basket.calculateTotalPrice();
 
@@ -47,7 +48,7 @@ public class BasketTests {
     public void testB() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(b);
+        basket.addToBasket(Item.getItem("B"));
 
         PriceResult result = basket.calculateTotalPrice();
 
@@ -64,7 +65,7 @@ public class BasketTests {
     public void testC() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(c);
+        basket.addToBasket(Item.getItem("C"));
 
         PriceResult result = basket.calculateTotalPrice();
 
@@ -81,7 +82,7 @@ public class BasketTests {
     public void testD() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(d);
+        basket.addToBasket(Item.getItem("D"));
 
         PriceResult result = basket.calculateTotalPrice();
 
@@ -98,7 +99,7 @@ public class BasketTests {
     public void testE() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(e);
+        basket.addToBasket(Item.getItem("E"));
 
         PriceResult result = basket.calculateTotalPrice();
 
@@ -115,8 +116,8 @@ public class BasketTests {
     public void testBB() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(b);
-        basket.addToBasket(b);
+        basket.addToBasket(Item.getItem("B"));
+        basket.addToBasket(Item.getItem("B"));
 
         PriceResult result = basket.calculateTotalPrice();
 
@@ -133,9 +134,9 @@ public class BasketTests {
     public void testBBB() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(b);
-        basket.addToBasket(b);
-        basket.addToBasket(b);
+        basket.addToBasket(Item.getItem("B"));
+        basket.addToBasket(Item.getItem("B"));
+        basket.addToBasket(Item.getItem("B"));
 
         PriceResult result = basket.calculateTotalPrice();
 
@@ -152,10 +153,10 @@ public class BasketTests {
     public void testBBBB() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(b);
-        basket.addToBasket(b);
-        basket.addToBasket(b);
-        basket.addToBasket(b);
+        basket.addToBasket(Item.getItem("B"));
+        basket.addToBasket(Item.getItem("B"));
+        basket.addToBasket(Item.getItem("B"));
+        basket.addToBasket(Item.getItem("B"));
 
         PriceResult result = basket.calculateTotalPrice();
 
@@ -172,9 +173,9 @@ public class BasketTests {
     public void testCCC() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(c);
-        basket.addToBasket(c);
-        basket.addToBasket(c);
+        basket.addToBasket(Item.getItem("C"));
+        basket.addToBasket(Item.getItem("C"));
+        basket.addToBasket(Item.getItem("C"));
 
         PriceResult result = basket.calculateTotalPrice();
 
@@ -191,10 +192,10 @@ public class BasketTests {
     public void testCCCC() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(c);
-        basket.addToBasket(c);
-        basket.addToBasket(c);
-        basket.addToBasket(c);
+        basket.addToBasket(Item.getItem("C"));
+        basket.addToBasket(Item.getItem("C"));
+        basket.addToBasket(Item.getItem("C"));
+        basket.addToBasket(Item.getItem("C"));
 
         PriceResult result = basket.calculateTotalPrice();
 
@@ -211,8 +212,8 @@ public class BasketTests {
     public void testDD() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(d);
-        basket.addToBasket(d);
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("D"));
 
         PriceResult result = basket.calculateTotalPrice();
 
@@ -229,9 +230,9 @@ public class BasketTests {
     public void testDDD() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(d);
-        basket.addToBasket(d);
-        basket.addToBasket(d);
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("D"));
 
         PriceResult result = basket.calculateTotalPrice();
 
@@ -248,8 +249,8 @@ public class BasketTests {
     public void testEE() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(e);
-        basket.addToBasket(e);
+        basket.addToBasket(Item.getItem("E"));
+        basket.addToBasket(Item.getItem("E"));
 
         PriceResult result = basket.calculateTotalPrice();
 
@@ -266,9 +267,9 @@ public class BasketTests {
     public void testEEE() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(e);
-        basket.addToBasket(e);
-        basket.addToBasket(e);
+        basket.addToBasket(Item.getItem("E"));
+        basket.addToBasket(Item.getItem("E"));
+        basket.addToBasket(Item.getItem("E"));
 
         PriceResult result = basket.calculateTotalPrice();
 
@@ -285,10 +286,10 @@ public class BasketTests {
     public void testEEEE() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(e);
-        basket.addToBasket(e);
-        basket.addToBasket(e);
-        basket.addToBasket(e);
+        basket.addToBasket(Item.getItem("E"));
+        basket.addToBasket(Item.getItem("E"));
+        basket.addToBasket(Item.getItem("E"));
+        basket.addToBasket(Item.getItem("E"));
 
         PriceResult result = basket.calculateTotalPrice();
 
@@ -305,20 +306,20 @@ public class BasketTests {
     public void testDDDDDDDDDDDDDD() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(d);
-        basket.addToBasket(d);
-        basket.addToBasket(d);
-        basket.addToBasket(d);
-        basket.addToBasket(d);
-        basket.addToBasket(d);
-        basket.addToBasket(d);
-        basket.addToBasket(d);
-        basket.addToBasket(d);
-        basket.addToBasket(d);
-        basket.addToBasket(d);
-        basket.addToBasket(d);
-        basket.addToBasket(d);
-        basket.addToBasket(d);
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("D"));
 
         PriceResult result = basket.calculateTotalPrice();
 
@@ -335,13 +336,13 @@ public class BasketTests {
     public void testBBBBCCC() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(b);
-        basket.addToBasket(b);
-        basket.addToBasket(b);
-        basket.addToBasket(b);
-        basket.addToBasket(c);
-        basket.addToBasket(c);
-        basket.addToBasket(c);
+        basket.addToBasket(Item.getItem("B"));
+        basket.addToBasket(Item.getItem("B"));
+        basket.addToBasket(Item.getItem("B"));
+        basket.addToBasket(Item.getItem("B"));
+        basket.addToBasket(Item.getItem("C"));
+        basket.addToBasket(Item.getItem("C"));
+        basket.addToBasket(Item.getItem("C"));
 
         PriceResult result = basket.calculateTotalPrice();
 
@@ -358,16 +359,16 @@ public class BasketTests {
     public void testABBCCCDDEE() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(a);
-        basket.addToBasket(b);
-        basket.addToBasket(b);
-        basket.addToBasket(c);
-        basket.addToBasket(c);
-        basket.addToBasket(c);
-        basket.addToBasket(d);
-        basket.addToBasket(d);
-        basket.addToBasket(e);
-        basket.addToBasket(e);
+        basket.addToBasket(Item.getItem("A"));
+        basket.addToBasket(Item.getItem("B"));
+        basket.addToBasket(Item.getItem("B"));
+        basket.addToBasket(Item.getItem("C"));
+        basket.addToBasket(Item.getItem("C"));
+        basket.addToBasket(Item.getItem("C"));
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("E"));
+        basket.addToBasket(Item.getItem("E"));
 
         PriceResult result = basket.calculateTotalPrice();
 
@@ -384,16 +385,16 @@ public class BasketTests {
     public void testEDCBAEDCBC() {
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 
-        basket.addToBasket(e);
-        basket.addToBasket(d);
-        basket.addToBasket(c);
-        basket.addToBasket(b);
-        basket.addToBasket(a);
-        basket.addToBasket(e);
-        basket.addToBasket(d);
-        basket.addToBasket(c);
-        basket.addToBasket(b);
-        basket.addToBasket(c);
+        basket.addToBasket(Item.getItem("E"));
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("C"));
+        basket.addToBasket(Item.getItem("B"));
+        basket.addToBasket(Item.getItem("A"));
+        basket.addToBasket(Item.getItem("E"));
+        basket.addToBasket(Item.getItem("D"));
+        basket.addToBasket(Item.getItem("C"));
+        basket.addToBasket(Item.getItem("B"));
+        basket.addToBasket(Item.getItem("C"));
 
         PriceResult result = basket.calculateTotalPrice();
 
