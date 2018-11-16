@@ -2,16 +2,13 @@ package me.grimlock257.unidayschallenge;
 
 public class Main {
     public static void main(String[] args) {
-        Item a = new Item("A", 8);
-        Item b = new Item("B", 12);
-        Item c = new Item("C", 4);
-        Item d = new Item("D", 7);
-        Item e = new Item("E", 5);
+        Item.loadItems("items.txt");
+        Discount.loadDiscounts("discounts.txt");
 
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
-        basket.addToBasket(b);
-        basket.addToBasket(b);
-        basket.addToBasket(b);
+        basket.addToBasket(Item.getItem("B"));
+        basket.addToBasket(Item.getItem("B"));
+        basket.addToBasket(Item.getItem("B"));
 
         PriceResult result = basket.calculateTotalPrice();
 
