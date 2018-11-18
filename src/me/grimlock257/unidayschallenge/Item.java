@@ -40,6 +40,17 @@ public class Item {
         }
     }
 
+    public static Item getItem(int index) {
+        int counter = 0;
+        for (Item item : Item.items.values()) {
+            if (++counter == index) {
+                return item;
+            }
+        }
+
+        return null;
+    }
+
     public static Item getItem(String name) {
         for (Item item : Item.items.values()) {
             if (item.getName().equals(name)) {

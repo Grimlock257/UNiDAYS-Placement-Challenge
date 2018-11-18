@@ -1,12 +1,13 @@
 package me.grimlock257.unidayschallenge;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class UnidaysDiscountChallenge {
-    private HashMap<Item, Integer> basket;
+    private LinkedHashMap<Item, Integer> basket;
 
     public UnidaysDiscountChallenge() {
-        basket = new HashMap<>();
+        basket = new LinkedHashMap<>();
     }
 
     public void addToBasket(Item item) {
@@ -44,5 +45,20 @@ public class UnidaysDiscountChallenge {
         deliveryCharge = (total >= 50 || total == 0) ? 0 : 7;
 
         return new PriceResult(total, deliveryCharge);
+    }
+
+    public Item getItem(int index) {
+        int counter = 0;
+        for (Item item : basket.keySet()) {
+            if (++counter == index) {
+                return item;
+            }
+        }
+
+        return null;
+    }
+
+    public LinkedHashMap<Item, Integer> getBasket() {
+        return basket;
     }
 }
