@@ -21,10 +21,12 @@ public class Main {
         while (true) {
             // Display menu & get user input
             System.out.println("1) Add an item to your basket");
-            System.out.println("2) Calculate basket price");
-            System.out.println("3) Exit program");
+            System.out.println("2) Remove item from basket");
+            System.out.println("3) Calculate basket price");
+            System.out.println("4) Empty basket");
+            System.out.println("5) Exit program");
 
-            int userMainMenuChoice = UserInputUtils.getIntegerInput(scanner, 1, 3);
+            int userMainMenuChoice = UserInputUtils.getIntegerInput(scanner, 1, 5);
 
             // Handle options
             switch (userMainMenuChoice) {
@@ -46,6 +48,32 @@ public class Main {
 
                     break;
                 case 2:
+                    System.out.println("Your basket currently contains:");
+                    System.out.println(basket.toString());
+
+                    // Retrieve the type of item they want to remove
+                    System.out.println("Enter the number of the item you want do delete:");
+
+                    int userRemoveItemChoice = UserInputUtils.getIntegerInput(scanner, 1, basket.getBasket().size());
+
+                    Item removeItem = basket.getItem(userRemoveItemChoice);
+
+                    // Ask how qty of removable (if applicable) and remove from basket
+                    int userRemoveQuantityChoice;
+
+                    if (basket.getBasket().get(removeItem) > 1) {
+                        System.out.println("How many do you want to remove from your basket?");
+                        userRemoveQuantityChoice = UserInputUtils.getIntegerInput(scanner, 1, basket.getBasket().get(removeItem));
+                    } else {
+                        userRemoveQuantityChoice = 1;
+                    }
+
+                    basket.removeFromBasket(removeItem, userRemoveQuantityChoice);
+
+                    System.out.println("Removed!");
+
+                    break;
+                case 3:
                     // Display the basket price information
                     if (basket.getBasket().size() != 0) {
                         result = basket.calculateTotalPrice();
@@ -62,7 +90,22 @@ public class Main {
                     }
 
                     break;
-                case 3:
+                case 4:
+                    System.out.println("Are you sure you want to empty your basket?");
+                    System.out.println("1) Yes");
+                    System.out.println("2) No");
+
+                    int userEmptyConfirm = UserInputUtils.getIntegerInput(scanner, 1, 2);
+
+                    if (userEmptyConfirm == 1) {
+                        basket.emptyBasket();
+                        System.out.println("You have emptied your basket!");
+                    } else {
+                        System.out.println("Your basket has not been changed.");
+                    }
+
+                    break;
+                case 5:
                     System.out.println("Exiting application...");
                     System.exit(0);
 
