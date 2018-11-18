@@ -15,6 +15,25 @@ public class UnidaysDiscountChallenge {
         basket.put(item, previousValue == null ? 1 : previousValue + 1);
     }
 
+    public void removeFromBasket(Item item, int quantity) {
+        if (basket.containsKey(item)) {
+            if (basket.get(item) == 1) {
+                basket.remove(item);
+                return;
+            } else {
+                basket.put(item, basket.get(item) - quantity);
+
+                if (basket.get(item) == 0) {
+                    basket.remove(item);
+                }
+            }
+        }
+    }
+
+    public void emptyBasket() {
+        basket.clear();
+    }
+
     public PriceResult calculateTotalPrice() {
         float total = 0;
         float deliveryCharge = 0;
@@ -60,5 +79,19 @@ public class UnidaysDiscountChallenge {
 
     public LinkedHashMap<Item, Integer> getBasket() {
         return basket;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+
+        result.append("#  Item  Qty\n");
+
+        int index = 0;
+        for (Item item : getBasket().keySet()) {
+            result.append(++index + "  " + item.getName() + "     " +  getBasket().get(item) + "\n");
+        }
+
+        return result.toString();
     }
 }
