@@ -23,11 +23,13 @@ public class Main {
             // Display menu & get user input
             System.out.println("1) Add an item to your basket");
             System.out.println("2) Remove item from basket");
-            System.out.println("3) Calculate basket price");
-            System.out.println("4) Empty basket");
-            System.out.println("5) Exit program");
+            System.out.println("3) View basket");
+            System.out.println("4) View available discounts");
+            System.out.println("5) Calculate basket price");
+            System.out.println("6) Empty basket");
+            System.out.println("7) Exit program");
 
-            int userMainMenuChoice = UserInputUtils.getIntegerInput(scanner, 1, 5);
+            int userMainMenuChoice = UserInputUtils.getIntegerInput(scanner, 1, 7);
 
             // Handle options
             switch (userMainMenuChoice) {
@@ -79,6 +81,28 @@ public class Main {
 
                     break;
                 case 3:
+                    System.out.println("Your basket currently contains:");
+
+                    // Print current basket contents in table like format
+                    if (basket.getBasket().size() != 0) {
+                        System.out.println(basket.toString());
+                    } else {
+                        System.out.println("No items in your basket!");
+                    }
+
+                    break;
+                case 4:
+                    // Print available discounts
+                    if (Discount.discounts.size() > 0) {
+                        for (Discount discount : Discount.discounts) {
+                            System.out.println(discount.toString());
+                        }
+                    } else {
+                        System.out.println("No discounts available!");
+                    }
+
+                    break;
+                case 5:
                     // Display the basket price information
                     if (basket.getBasket().size() != 0) {
                         result = basket.calculateTotalPrice();
@@ -95,7 +119,7 @@ public class Main {
                     }
 
                     break;
-                case 4:
+                case 6:
                     System.out.println("Are you sure you want to empty your basket?");
                     System.out.println("1) Yes");
                     System.out.println("2) No");
@@ -110,7 +134,7 @@ public class Main {
                     }
 
                     break;
-                case 5:
+                case 7:
                     System.out.println("Exiting application...");
                     System.exit(0);
 
