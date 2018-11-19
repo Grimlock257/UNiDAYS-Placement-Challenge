@@ -48,29 +48,33 @@ public class Main {
 
                     break;
                 case 2:
-                    System.out.println("Your basket currently contains:");
-                    System.out.println(basket.toString());
+                    if (basket.getBasket().size() != 0) {
+                        System.out.println("Your basket currently contains:");
+                        System.out.println(basket.toString());
 
-                    // Retrieve the type of item they want to remove
-                    System.out.println("Enter the number of the item you want do delete:");
+                        // Retrieve the type of item they want to remove
+                        System.out.println("Enter the number of the item you want do delete:");
 
-                    int userRemoveItemChoice = UserInputUtils.getIntegerInput(scanner, 1, basket.getBasket().size());
+                        int userRemoveItemChoice = UserInputUtils.getIntegerInput(scanner, 1, basket.getBasket().size());
 
-                    Item removeItem = basket.getItem(userRemoveItemChoice);
+                        Item removeItem = basket.getItem(userRemoveItemChoice);
 
-                    // Ask how qty of removable (if applicable) and remove from basket
-                    int userRemoveQuantityChoice;
+                        // Ask how qty of removable (if applicable) and remove from basket
+                        int userRemoveQuantityChoice;
 
-                    if (basket.getBasket().get(removeItem) > 1) {
-                        System.out.println("How many do you want to remove from your basket?");
-                        userRemoveQuantityChoice = UserInputUtils.getIntegerInput(scanner, 1, basket.getBasket().get(removeItem));
+                        if (basket.getBasket().get(removeItem) > 1) {
+                            System.out.println("How many do you want to remove from your basket?");
+                            userRemoveQuantityChoice = UserInputUtils.getIntegerInput(scanner, 1, basket.getBasket().get(removeItem));
+                        } else {
+                            userRemoveQuantityChoice = 1;
+                        }
+
+                        basket.removeFromBasket(removeItem, userRemoveQuantityChoice);
+
+                        System.out.println("Removed!");
                     } else {
-                        userRemoveQuantityChoice = 1;
+                        System.out.println("No items in your basket!");
                     }
-
-                    basket.removeFromBasket(removeItem, userRemoveQuantityChoice);
-
-                    System.out.println("Removed!");
 
                     break;
                 case 3:
