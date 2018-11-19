@@ -78,4 +78,9 @@ public class Discount {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    @Override
+    public String toString() {
+        return "Applies to item '" + this.getProductName() + "': " + this.getDiscountName();
+    }
 }
