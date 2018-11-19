@@ -4,6 +4,9 @@ import me.grimlock257.unidayschallenge.utils.FileUtils;
 
 import java.util.ArrayList;
 
+/**
+ * Represents a discount that can be applied to the basket based on item quantity
+ */
 public class Discount {
     private String discountName;
     private String productName;
@@ -13,6 +16,14 @@ public class Discount {
     // This list stores the available discounts
     public static ArrayList<Discount> discounts = new ArrayList<>();
 
+    /**
+     * Represents a Discount that can be applied to a basket
+     *
+     * @param discountName - The name of the discount
+     * @param productName  - The productName of the discount
+     * @param price        - The price of the resulting discount
+     * @param quantity     - The required quantity of the item for the discount to be applied
+     */
     public Discount(String discountName, String productName, float price, int quantity) {
         this.discountName = discountName;
         this.productName = productName;
@@ -20,6 +31,11 @@ public class Discount {
         this.quantity = quantity;
     }
 
+    /**
+     * This static method places all the available items into the items ArrayList
+     *
+     * @param path - The path to the discounts .txt file
+     */
     public static void loadDiscounts(String path) {
         String discountsFile = FileUtils.loadFileAsString(path);
 

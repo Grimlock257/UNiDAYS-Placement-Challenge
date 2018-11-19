@@ -1,9 +1,18 @@
 package me.grimlock257.unidayschallenge;
 
+/**
+ * Object to store basket information (total cost of items and delivery charge)
+ */
 public class PriceResult {
-    private float total = 0.0f;
-    private float deliveryCharge = 0.0f;
+    private float total;
+    private float deliveryCharge;
 
+    /**
+     * Object structure to store price information for basket
+     *
+     * @param total          - The total cost of items in the basket (discounts applied)
+     * @param deliveryCharge - The total delivery cost for the basket
+     */
     public PriceResult(float total, float deliveryCharge) {
         this.total = total;
         this.deliveryCharge = deliveryCharge;
@@ -13,16 +22,8 @@ public class PriceResult {
         return total;
     }
 
-    public void setTotal(float total) {
-        this.total = total;
-    }
-
     public float getDeliveryCharge() {
         return deliveryCharge;
-    }
-
-    public void setDeliveryCharge(float deliveryCharge) {
-        this.deliveryCharge = deliveryCharge;
     }
 
     @Override

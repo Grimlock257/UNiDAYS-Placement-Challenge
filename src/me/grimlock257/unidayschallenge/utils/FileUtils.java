@@ -4,7 +4,19 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * Methods regarding general file handling
+ */
 public class FileUtils {
+    private FileUtils() {
+    }
+
+    /**
+     * Read in the specified file in a string format
+     *
+     * @param file - The path to the file to read
+     * @return - The file as a String object
+     */
     public static String loadFileAsString(String file) {
         StringBuilder fileSource = new StringBuilder();
 

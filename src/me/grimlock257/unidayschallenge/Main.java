@@ -2,14 +2,15 @@ package me.grimlock257.unidayschallenge;
 
 import me.grimlock257.unidayschallenge.utils.UserInputUtils;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        // Load items & discounts from files
         Item.loadItems("items.txt");
         Discount.loadDiscounts("discounts.txt");
 
+        // Key variables for program
         Scanner scanner = new Scanner(System.in);
         UnidaysDiscountChallenge basket = new UnidaysDiscountChallenge();
 

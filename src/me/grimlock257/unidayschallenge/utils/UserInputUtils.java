@@ -3,6 +3,13 @@ package me.grimlock257.unidayschallenge.utils;
 import java.util.Scanner;
 
 public class UserInputUtils {
+    /**
+     * Get a validated user from the user
+     *
+     * @param min - The minimum allowed integer
+     * @param max - The maximum allowed integer
+     * @return - The validated user choice integer
+     */
     public static int getIntegerInput(Scanner scanner, int min, int max) {
         int userOption;
 

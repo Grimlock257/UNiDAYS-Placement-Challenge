@@ -1,8 +1,10 @@
 package me.grimlock257.unidayschallenge;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+/**
+ * Represents a shopping basket to contain Item objects
+ */
 public class UnidaysDiscountChallenge {
     private LinkedHashMap<Item, Integer> basket;
 
@@ -10,11 +12,22 @@ public class UnidaysDiscountChallenge {
         basket = new LinkedHashMap<>();
     }
 
+    /**
+     * Add specified item to the basket
+     *
+     * @param item - The item to be added to the basket
+     */
     public void addToBasket(Item item) {
         Integer previousValue = basket.get(item);
         basket.put(item, previousValue == null ? 1 : previousValue + 1);
     }
 
+    /**
+     * Remove specified item from the basket
+     *
+     * @param item     - The item to be removed from the basket
+     * @param quantity - The amount to be remove from basket
+     */
     public void removeFromBasket(Item item, int quantity) {
         if (basket.containsKey(item)) {
             if (basket.get(item) == 1) {
@@ -30,10 +43,18 @@ public class UnidaysDiscountChallenge {
         }
     }
 
+    /**
+     * Empty the basket of all items.
+     */
     public void emptyBasket() {
         basket.clear();
     }
 
+    /**
+     * Calculate the total price of basket items and delivery charge
+     *
+     * @return - Return a new PriceResult object containing the calculated data
+     */
     public PriceResult calculateTotalPrice() {
         float total = 0;
         float deliveryCharge = 0;
@@ -66,6 +87,12 @@ public class UnidaysDiscountChallenge {
         return new PriceResult(total, deliveryCharge);
     }
 
+    /**
+     * Return an item from the basket LinkedHashMap
+     *
+     * @param index - The index at which to find the item
+     * @return - The Item at the specified index
+     */
     public Item getItem(int index) {
         int counter = 0;
         for (Item item : basket.keySet()) {
@@ -89,7 +116,7 @@ public class UnidaysDiscountChallenge {
 
         int index = 0;
         for (Item item : getBasket().keySet()) {
-            result.append(++index + "  " + item.getName() + "     " +  getBasket().get(item) + "\n");
+            result.append(++index + "  " + item.getName() + "     " + getBasket().get(item) + "\n");
         }
 
         return result.toString();

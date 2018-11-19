@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 public class BasketTests {
     @BeforeClass
     public static void onLaunch() {
+        // Load the items & discounts into memory
         Item.loadItems("items.txt");
         Discount.loadDiscounts("discounts.txt");
     }
