@@ -3,6 +3,9 @@ package me.grimlock257.unidayschallenge.utils;
 import java.util.Scanner;
 
 public class UserInputUtils {
+    private  UserInputUtils() {
+    }
+    
     /**
      * Get a validated user from the user
      *
