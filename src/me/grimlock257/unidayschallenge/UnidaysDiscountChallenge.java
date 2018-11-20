@@ -18,8 +18,12 @@ public class UnidaysDiscountChallenge {
      * @param item - The item to be added to the basket
      */
     public void addToBasket(Item item) {
-        Integer previousValue = basket.get(item);
-        basket.put(item, previousValue == null ? 1 : previousValue + 1);
+        if (item != null) {
+            Integer previousValue = basket.get(item);
+            basket.put(item, previousValue == null ? 1 : previousValue + 1);
+        } else {
+            System.err.println("Oops... something went wrong, can't add null Item. Please try again.");
+        }
     }
 
     /**
@@ -57,14 +61,16 @@ public class UnidaysDiscountChallenge {
      */
     public PriceResult calculateTotalPrice() {
         float total = 0;
-        float deliveryCharge = 0;
+        float deliveryCharge;
 
         float curDiscount;
         float curNonDiscount;
 
+        // Loop through all the types of items in our basket
         for (Item item : basket.keySet()) {
             Discount theDiscount = null;
 
+            // Loop through all the discounts to see if a discount exists for our current item
             for (Discount discount : Discount.discounts) {
                 if (item.getName().equals(discount.getProductName())) {
                     theDiscount = discount;
@@ -72,6 +78,7 @@ public class UnidaysDiscountChallenge {
                 }
             }
 
+            // Calculate the price that this item adds to the total
             if (theDiscount != null) {
                 curDiscount = basket.get(item) / theDiscount.getQuantity() * theDiscount.getPrice();
                 curNonDiscount = (basket.get(item) - ((basket.get(item) / theDiscount.getQuantity()) * theDiscount.getQuantity())) * item.getPrice();
@@ -82,7 +89,7 @@ public class UnidaysDiscountChallenge {
             }
         }
 
-        deliveryCharge = (total >= 50 || total == 0) ? 0 : 7;
+        deliveryCharge = (total == 0 || total >= 50) ? 0 : 7;
 
         return new PriceResult(total, deliveryCharge);
     }

@@ -142,17 +142,22 @@ public class Main {
 
                     break;
                 case 6:
-                    System.out.println("Are you sure you want to empty your basket?");
-                    System.out.println("1) Yes");
-                    System.out.println("2) No");
+                    // Confirm emptying of basket & carry out if so
+                    if (basket.getBasket().size() != 0) {
+                        System.out.println("Are you sure you want to empty your basket?");
+                        System.out.println("1) Yes");
+                        System.out.println("2) No");
 
-                    int userEmptyConfirm = UserInputUtils.getIntegerInput(scanner, 1, 2);
+                        int userEmptyConfirm = UserInputUtils.getIntegerInput(scanner, 1, 2);
 
-                    if (userEmptyConfirm == 1) {
-                        basket.emptyBasket();
-                        System.out.println("You have emptied your basket!");
+                        if (userEmptyConfirm == 1) {
+                            basket.emptyBasket();
+                            System.out.println("You have emptied your basket!");
+                        } else {
+                            System.out.println("Your basket has not been changed.");
+                        }
                     } else {
-                        System.out.println("Your basket has not been changed.");
+                        System.out.println("No items in your basket!");
                     }
 
                     break;
