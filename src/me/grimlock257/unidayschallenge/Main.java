@@ -6,6 +6,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Main program = new Main();
+        program.runProgram();
+    }
+
+    /**
+     * The main program function.
+     */
+    public void runProgram() {
         // Load items & discounts from files
         Item.loadItems("items.txt");
         Discount.loadDiscounts("discounts.txt");
