@@ -46,11 +46,16 @@ public class Main {
 
                     // Generate numeric list of available items
                     int addItemCounter = 0;
+                    System.out.println("0) Return to Main Menu");
                     for (Item item : Item.items.values()) {
                         System.out.println(++addItemCounter + ") " + item.getName());
                     }
 
-                    int userAddChoice = UserInputUtils.getIntegerInput(scanner, 1, Item.items.size());
+                    int userAddChoice = UserInputUtils.getIntegerInput(scanner, 0, Item.items.size());
+
+                    if (userAddChoice == 0) {
+                        break;
+                    }
 
                     Item chosenItem = Item.getItem(userAddChoice);
 
@@ -62,11 +67,16 @@ public class Main {
                     if (basket.getBasket().size() != 0) {
                         System.out.println("Your basket currently contains:");
                         System.out.println(basket.toString());
+                        System.out.println("Enter 0 to return to Main Menu.");
 
                         // Retrieve the type of item they want to remove
                         System.out.println("Enter the number of the item you want do delete:");
 
-                        int userRemoveItemChoice = UserInputUtils.getIntegerInput(scanner, 1, basket.getBasket().size());
+                        int userRemoveItemChoice = UserInputUtils.getIntegerInput(scanner, 0, basket.getBasket().size());
+
+                        if (userRemoveItemChoice == 0) {
+                            break;
+                        }
 
                         Item removeItem = basket.getItem(userRemoveItemChoice);
 
@@ -74,10 +84,14 @@ public class Main {
                         int userRemoveQuantityChoice;
 
                         if (basket.getBasket().get(removeItem) > 1) {
-                            System.out.println("How many do you want to remove from your basket?");
+                            System.out.println("How many do you want to remove from your basket (enter 0 to return to Main Menu)?");
                             userRemoveQuantityChoice = UserInputUtils.getIntegerInput(scanner, 1, basket.getBasket().get(removeItem));
                         } else {
                             userRemoveQuantityChoice = 1;
+                        }
+
+                        if (userRemoveQuantityChoice == 0) {
+                            break;
                         }
 
                         basket.removeFromBasket(removeItem, userRemoveQuantityChoice);
