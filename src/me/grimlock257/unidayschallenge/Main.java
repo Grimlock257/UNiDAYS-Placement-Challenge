@@ -59,8 +59,12 @@ public class Main {
 
                     Item chosenItem = Item.getItem(userAddChoice);
 
-                    basket.addToBasket(chosenItem);
-                    System.out.println("Added item " + chosenItem.getName() + " to your basket!");
+                    if (chosenItem != null) {
+                        basket.addToBasket(chosenItem);
+                        System.out.println("Added item " + chosenItem.getName() + " to your basket!");
+                    } else {
+                        System.err.println("Oops... something wen't wrong, that item does not exist! Please try again.");
+                    }
 
                     break;
                 case 2:
@@ -85,7 +89,7 @@ public class Main {
 
                         if (basket.getBasket().get(removeItem) > 1) {
                             System.out.println("How many do you want to remove from your basket (enter 0 to return to Main Menu)?");
-                            userRemoveQuantityChoice = UserInputUtils.getIntegerInput(scanner, 1, basket.getBasket().get(removeItem));
+                            userRemoveQuantityChoice = UserInputUtils.getIntegerInput(scanner, 0, basket.getBasket().get(removeItem));
                         } else {
                             userRemoveQuantityChoice = 1;
                         }
