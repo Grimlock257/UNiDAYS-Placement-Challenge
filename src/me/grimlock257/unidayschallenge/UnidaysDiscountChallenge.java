@@ -119,11 +119,11 @@ public class UnidaysDiscountChallenge {
     public String toString() {
         StringBuilder result = new StringBuilder();
 
-        result.append("#  Item  Qty\n");
+        result.append(String.format("%1s | %-4s | %-3s%n", "#", "Item", "Qty"));
 
         int index = 0;
         for (Item item : getBasket().keySet()) {
-            result.append(++index + "  " + item.getName() + "     " + getBasket().get(item) + "\n");
+            result.append(String.format("%1d | %-4s | %-3d%n", ++index, item.getName(), getBasket().get(item)));
         }
 
         return result.toString();

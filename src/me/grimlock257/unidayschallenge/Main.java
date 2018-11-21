@@ -133,9 +133,8 @@ public class Main {
                         deliveryTotal = result.getDeliveryCharge();
                         overallTotal = totalPrice + deliveryTotal;
 
-                        System.out.format("The total price of the items is £%.2f%n", totalPrice);
-                        System.out.format("The delivery cost for your basket is £%.2f%n", deliveryTotal);
-                        System.out.format("The overall total is £%.2f%n", overallTotal);
+                        System.out.format("%11s | %14s | %13s%n", "Total Price", "Delivery Total", "Overall Total");
+                        System.out.format("£%-10.2f | £%-13.2f | £%-12.2f%n", totalPrice, deliveryTotal, overallTotal);
                     } else {
                         System.out.println("No items in your basket!");
                     }

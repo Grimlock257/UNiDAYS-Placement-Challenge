@@ -28,6 +28,6 @@ public class PriceResult {
 
     @Override
     public String toString() {
-        return "Total: " + this.total + ". Delivery Charge: " + this.getDeliveryCharge();
+        return "Total: " + this.total + ". Delivery Charge: " + this.getDeliveryCharge() + ".";
     }
 }
