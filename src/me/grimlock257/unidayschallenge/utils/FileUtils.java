@@ -1,8 +1,8 @@
 package me.grimlock257.unidayschallenge.utils;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * Methods regarding general file handling
@@ -22,7 +22,7 @@ public class FileUtils {
 
         // Try open the file, if failure, print error and exit
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(FileUtils.class.getResourceAsStream("/" + file)));
             String line;
 
             // Runs until it runs out of lines to read (must have reached the end of the file)
